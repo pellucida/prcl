@@ -1,5 +1,10 @@
 /*
 //	@(#) prcl.c - List C code  with intelligent line numbers
+//
+//	License: Creative Commons CC0 
+//		http://creativecommons.org/publicdomain/zero/1.0/legalcode
+//	Author:	James Sainsbury
+//		toves@sdf.lonestar.org
 */
 # include	<stdio.h>
 # include	<stdlib.h>
@@ -31,7 +36,7 @@ static	int	is_escaped (char line[], int i) {
 // its 'interesting' and will have a line number prepended
 
 static	int	is_interesting (int ch) {
-	int	result	= isalnum (ch);
+	int	result	= isalnum (ch) || (ch=='_');
 	return	result;
 }
 
@@ -115,8 +120,19 @@ static	int	cm_lookup (char* str, char** closep) {
 static	int	qt_lookup (char* str, char** closep) {
 	return	lookup (QUOTES, NQUOTES, str, closep);
 }
+//	Look for token from BORING[] at str[0..]
+//	Need to check the next char to exclude concatenated
+//	keywords being match eg
+//		else_do	= enumbreak;
 static	int	bo_lookup (char* str) {
-	return	lookup (BORING, NBORING, str, 0);
+	int	result	= 0;
+	int	len	= lookup (BORING, NBORING, str, 0);
+	if (len > 0) {
+		int	ch	= str[len];
+		if (!isalnum (ch) && (ch != '_'))
+			result	= len;
+	}
+	return	result;
 }
 /* ---------------------------------------------------- */
 
