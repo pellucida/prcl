@@ -25,7 +25,7 @@ symbols are also deemed uninteresting.
          /*
          //    @(#) example.c
          */
-     4    # include    &lt;stdio.h&gt;
+     4    # include    <stdio.h>
           //    C++ style comment
      6    main (int argc, char* argv[]) {
      7        if (argc &lt; 4) {
