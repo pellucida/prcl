@@ -28,7 +28,7 @@ symbols are also deemed uninteresting.
      4    # include    <stdio.h>
           //    C++ style comment
      6    main (int argc, char* argv[]) {
-     7        if (argc &lt; 4) {
+     7        if (argc < 4) {
      8            switch (argc) {
      9            case    1:
     10                printf ("Hello!\n");
@@ -64,7 +64,7 @@ Creative Commons CC0
 [http://creativecommons.org/publicdomain/zero/1.0/legalcode](http://creativecommons.org/publicdomain/zero/1.0/legalcode)
 
 #### AUTHOR
-[James Sainsbury](mailto:toves@sdf.lonestar.org)
+[James Sainsbury](mailto:toves@sdf.org)
 
 #### SEE ALSO
 Pr(1) - `pr -n 8` will print numbers against every line.
